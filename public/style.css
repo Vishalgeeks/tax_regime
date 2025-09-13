@@ -1,0 +1,124 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    
+    
+  }
+  
+  .container {
+    width: 900px;
+    margin: 40px auto;
+    padding-bottom: 20px;
+    border: 2px solid #100101;
+    border-radius: 5px;
+    background:linear-gradient(to top,rgb(239, 178, 239),rgb(17, 98, 110));
+    box-shadow: 0 0 10px black;
+    font-weight: bold;
+    h2,h1{
+      text-align: center;
+      margin-top: 0;
+      color: #f8fdfc;
+    }
+  }
+  h2,h1{
+    text-align: center;
+    margin-top: 0;
+    color: #f8fdfc;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    width: 50%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  button[type="submit"] {
+    background-color: #299e2d;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #347e37;
+  }
+  
+  a {
+    color: rgb(251, 252, 252);
+    text-decoration: none;
+    
+  }
+  
+  a:hover {
+    color: #78a3c9;
+     text-decoration: none;
+   }
+
+   #sendlink{
+    background-color: #9aff9d;
+    margin-top: 10px;
+   }
+
+   #sendlink:hover{
+    background-color: #347e37;
+   }
+ 
+   #report{
+  transform: translate(877px);
+  background-color: #299e2d;
+ }
+ #button1hover {
+  background-color: #347e37;
+  #link1{
+    color: rgb(51, 100, 100);
+    text-decoration: none;
+    
+  }
+  
+
+ }
+ #button1 {
+  background-color: #299e2d;
+  color: #3f2020;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+
+}
+#link1{
+  color: rgb(6, 31, 31);
+    text-decoration: none;
+}
+#download{
+  color:#f8fdfc;
+  text-decoration: none;
+}
+
+#circular{
+  background-color: rgb(53, 11, 53) ;
+  width: 930px;
+MARGIN:auto;
+  padding-left: 500px;
+  padding: 20px;
+  border: 2px solid #100101;
+  border-radius: 5px;
+  text-align: center;
+  
+}

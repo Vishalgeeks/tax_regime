@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Report - Tax Regime</title>
+    
+    <!-- These are the external links that helmet was blocking -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-100">
+
+    <!-- Header Section -->
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-slate-800">TAX REGIME</h1>
+            <div class="flex items-center gap-6">
+                 <a href="/create.html" class="text-sm text-slate-600 hover:text-indigo-600 font-medium transition-colors">Declaration Form</a>
+                 <a href="/login.html" class="text-sm text-slate-600 hover:text-indigo-600 font-medium transition-colors">Login</a>
+                 <a href="/register.html" class="text-sm text-slate-600 hover:text-indigo-600 font-medium transition-colors">Register</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto p-4 md:p-8">
+        
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-bold text-slate-900">Declaration Report</h2>
+            <p class="text-slate-500 mt-2">A summary of all submitted declarations.</p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+            
+            <% if(rows.length > 0) { %>
+            <!-- This section shows if there IS data -->
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm text-left text-slate-500">
+                    <thead class="text-xs text-slate-700 uppercase bg-slate-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">P.no</th>
+                            <th scope="col" class="px-6 py-3">Name</th>
+                            <th scope="col" class="px-6 py-3">Level</th>
+                            <th scope="col" class="px-6 py-3">Created On</th>
+                            <th scope="col" class="px-6 py-3">Option</th>
+                            <th scope="col" class="px-6 py-3 text-right">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% rows.forEach((eachData) => { %>
+                        <tr class="bg-white border-b hover:bg-slate-50">
+                            <th scope="row" class="px-6 py-4 font-medium text-slate-900 whitespace-nowrap">
+                                <%- eachData.pno %>
+                            </th>
+                            <td class="px-6 py-4">
+                                <%- eachData.name %>
+                            </td>
+                            <td class="px-6 py-4">
+                                <%- eachData.level %>
+                            </td>
+                            <td class="px-6 py-4">
+                                <!-- Added a check to prevent "Invalid Date" errors -->
+                                <%= eachData.createdon ? new Date(eachData.createdon).toLocaleDateString() : '-' %>
+                            </td>
+                            <td class="px-6 py-4">
+                                <span class="px-2 py-1 text-xs font-medium rounded-full <%= eachData.option === 'yes' ? 'bg-green-100 text-green-800' : 'bg-blue-100 text-blue-800' %>">
+                                    <%= eachData.option === 'yes' ? 'Old Regime' : 'New Regime' %>
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <div class="flex items-center justify-end gap-4">
+                                    <a href="/update-data?id=<%- eachData.id %>" class="font-medium text-indigo-600 hover:underline">Edit</a>
+                                    <form action="/delete-data" method="POST" onsubmit="return confirm('Are you sure you want to delete this record?');">
+                                        <input type="hidden" name="id" value="<%- eachData.id %>">
+                                        <button type="submit" class="font-medium text-red-600 hover:underline">Delete</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+            <% } else { %>
+            <!-- This section shows if there is NO data -->
+            <div class="text-center p-12">
+                <div class="flex justify-center items-center mb-4">
+                    <div class="bg-slate-200 p-4 rounded-full">
+                        <i class="fas fa-box-open text-3xl text-slate-500"></i>
+                    </div>
+                </div>
+                <h3 class="text-xl font-semibold text-slate-800">No Data Found</h3>
+                <p class="text-slate-500 mt-2">There are no declarations to display at this time.</p>
+            </div>
+            <% } %>
+        </div>
+    </main>
+</body>
+</html>
+
